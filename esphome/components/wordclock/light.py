@@ -9,8 +9,8 @@ WordClockLight = wordclock_ns.class_('WordClockLight', light.LightOutput)
 CONF_INTERNAL_LIGHT = "internal_light"
 
 CONFIG_SCHEMA = light.BINARY_LIGHT_SCHEMA.extend({
-    cg.GenerateID(): cg.declare_id(WordClockLight),
-    cg.Required(CONF_INTERNAL_LIGHT): cg.use_id(light.AddressableLight),
+    cv.GenerateID(): cv.declare_id(WordClockLight),
+    cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.AddressableLight),
 })
 
 async def to_code(config):
