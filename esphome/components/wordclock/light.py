@@ -1,5 +1,5 @@
 import esphome.codegen as cg
-from esphome.components import light
+from esphome.components import light, neopixelbus
 import esphome.config_validation as cv
 from esphome.const import CONF_ID, CONF_OUTPUT_ID
 
