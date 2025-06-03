@@ -10,7 +10,7 @@ CONF_INTERNAL_LIGHT = "internal_light"
 
 CONFIG_SCHEMA = light.BINARY_LIGHT_SCHEMA.extend({
     cv.GenerateID(): cv.declare_id(WordClockLight),
-    cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.NeoPixelBusLightOutputBase),
+    cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.AddressableLight),
 })
 
 async def to_code(config):
