@@ -1,13 +1,16 @@
-from . import WordClockLight
-import esphome.config_validation as cv
 import esphome.codegen as cg
-from esphome.const import CONF_ID
 from esphome.components import light
-from . import CONF_INTERNAL_LIGHT
+import esphome.config_validation as cv
+from esphome.const import CONF_ID
+
+wordclock_ns = cg.esphome_ns.namespace('wordclock')
+WordClockLight = wordclock_ns.class_('WordClockLight', light.LightOutput)
+
+CONF_INTERNAL_LIGHT = "internal_light"
 
 CONFIG_SCHEMA = light.BINARY_LIGHT_SCHEMA.extend({
-    cv.GenerateID(): cv.declare_id(WordClockLight),
-    cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.AddressableLight),
+    cg.GenerateID(): cg.declare_id(WordClockLight),
+    cg.Required(CONF_INTERNAL_LIGHT): cg.use_id(light.AddressableLight),
 })
 
 async def to_code(config):
