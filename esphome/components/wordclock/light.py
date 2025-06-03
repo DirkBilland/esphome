@@ -6,7 +6,7 @@ from esphome.const import CONF_BLUE, CONF_GREEN, CONF_OUTPUT_ID, CONF_RED
 wordclock_ns = cg.esphome_ns.namespace("wordclock")
 WordclockLightOutput = wordclock_ns.class_("WordclockLightOutput", rgb.RGBLightOutput)
 
-CONFIG_SCHEMA = light.RGB_LIGHT_SCHEMA.extend(
+CONFIG_SCHEMA = light.WORDCLOCK_LIGHT_SCHEMA.extend(
     {
         cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(WordclockLightOutput),
         cv.Required(CONF_RED): cv.use_id(output.FloatOutput),
