@@ -1,6 +1,6 @@
 #include "esphome.h"
 
-class WordClockLight : public Component, public LightOutput {
+class WordClockLight : public esphome::light:LightOutput {
  public:
   void set_internal_light(esphome::light::AddressableLight* light) {
     this->internal_light_ = light;
@@ -8,7 +8,7 @@ class WordClockLight : public Component, public LightOutput {
 
   esphome::light::LightTraits get_traits() override {
       // return the traits this light supports
-      auto traits = LightTraits();
+      auto traits = esphome::light::LightTraits();
       traits.set_supported_color_modes({ColorMode::RGB, ColorMode::BRIGHTNESS});
       return traits;
   }
