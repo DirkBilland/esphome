@@ -3,6 +3,8 @@
 using namespace esphome;
 using namespace light;
 
+bool change = false;
+
 class WordClockLight : public LightOutput {
  public:
   void set_internal_light(AddressableLight* light) {
