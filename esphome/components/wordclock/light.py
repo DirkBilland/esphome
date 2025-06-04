@@ -15,6 +15,6 @@ CONFIG_SCHEMA = cv.Schema({
 
 async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
-    await light.register_light(var, config)
+    await cg.register_component(var, config)
     internal = await cg.get_variable(config[CONF_INTERNAL_LIGHT])
     cg.add(var.set_internal_light(internal))
