@@ -7,7 +7,7 @@ namespace wordclock {
 
 bool change = false;
 
-class WordClockLight : public Component, public LightOutput {
+class WordClockLight : public Component {
  public:
   void set_internal_light(AddressableLight* light) {
     this->internal_light_ = light;
