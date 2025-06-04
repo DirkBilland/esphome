@@ -8,12 +8,13 @@ WordClockLight = wordclock_ns.class_('WordClockLight', light.LightOutput)
 
 light_ns = cg.esphome_ns.namespace("light")
 LightOutput = light_ns.class_("LightOutput")
+AddressableLight = light_ns.class_("AddressableLight", LightOutput, cg.Component)
 
 CONF_INTERNAL_LIGHT = "internal_light"
 
 CONFIG_SCHEMA = light.ADDRESSABLE_LIGHT_SCHEMA.extend({
     cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(WordClockLight),
-    cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(LightOutput),
+    cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(AddressableLight),
 })
 
 async def to_code(config):
