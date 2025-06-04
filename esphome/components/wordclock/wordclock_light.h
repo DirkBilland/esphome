@@ -6,11 +6,11 @@ class WordClockLight : public esphome::light::LightOutput {
     this->internal_light_ = light;
   }
 
-  esphome::light::LightTraits get_traits() override {
-    auto traits = esphome::light::LightTraits();
-    traits.set_supports_brightness(true);
-    traits.set_supports_rgb(true);
-    return traits;
+  LightTraits get_traits() override {
+      // return the traits this light supports
+      auto traits = LightTraits();
+      traits.set_supported_color_modes({ColorMode::RGB, ColorMode::BRIGHTNESS});
+      return traits;
   }
 
   void write_state(esphome::light::LightState* state) override {
