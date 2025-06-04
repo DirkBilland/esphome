@@ -5,14 +5,14 @@ using namespace light;
 
 class WordClockLight : public LightOutput {
  public:
-  void set_internal_light(esphome::light::AddressableLight* light) {
+  void set_internal_light(AddressableLight* light) {
     this->internal_light_ = light;
   }
 
-  esphome::light::LightTraits get_traits() override {
+  LightTraits get_traits() override {
       // return the traits this light supports
-      auto traits = esphome::light::LightTraits();
-      traits.set_supported_color_modes({esphome::light::ColorMode::RGB, esphome::light::ColorMode::BRIGHTNESS});
+      auto traits = LightTraits();
+      traits.set_supported_color_modes({ColorMode::RGB, ColorMode::BRIGHTNESS});
       return traits;
   }
 
