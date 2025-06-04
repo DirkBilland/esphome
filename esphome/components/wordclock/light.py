@@ -1,5 +1,5 @@
 import esphome.codegen as cg
-from esphome.components import light, output, addressable_light
+from esphome.components import light, output
 import esphome.config_validation as cv
 from esphome.const import CONF_ID, CONF_OUTPUT_ID
 
@@ -10,7 +10,7 @@ CONF_INTERNAL_LIGHT = "internal_light"
 
 CONFIG_SCHEMA = light.ADDRESSABLE_LIGHT_SCHEMA.extend({
     cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(WordClockLight),
-    cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(AddressableLightDisplay),
+    cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(AddressableLight),
 })
 
 async def to_code(config):
