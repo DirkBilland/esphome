@@ -1,7 +1,9 @@
-#include "esphome.h"
+#pragma once
 
-using namespace esphome;
-using namespace light;
+#include "esphome/core/component.h"
+
+namespace esphome {
+namespace wordclock {
 
 bool change = false;
 
@@ -40,3 +42,5 @@ class WordClockLight : public Component, public LightOutput {
  protected:
   esphome::light::AddressableLight* internal_light_;
 };
+} // namespace wordclock
+} // namespace esphome
