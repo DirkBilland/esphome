@@ -6,6 +6,8 @@ from esphome.const import CONF_ID, CONF_OUTPUT_ID
 wordclock_ns = cg.esphome_ns.namespace('wordclock')
 WordClockLight = wordclock_ns.class_('WordClockLight', light.LightOutput)
 
+LightOutput = light_ns.class_("LightOutput")
+
 CONF_INTERNAL_LIGHT = "internal_light"
 
 CONFIG_SCHEMA = light.ADDRESSABLE_LIGHT_SCHEMA.extend({
