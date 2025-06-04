@@ -4,12 +4,12 @@ import esphome.config_validation as cv
 from esphome.const import CONF_ID, CONF_OUTPUT_ID
 
 wordclock_ns = cg.esphome_ns.namespace("wordclock")
-WordClockLight = wordclock_ns.class_("WordClockLight", light.LightOutput)
+WordClock = wordclock_ns.class_("WordClock", light.LightOutput)
 
 CONF_INTERNAL_LIGHT = "internal_light"
 
 CONFIG_SCHEMA = cv.Schema({
-    cv.GenerateID(): cv.declare_id(WordClockLight),
+    cv.GenerateID(): cv.declare_id(WordClock),
     cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.AddressableLight),
 })
 
