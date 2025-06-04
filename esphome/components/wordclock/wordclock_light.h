@@ -16,15 +16,23 @@ class WordClockLight : public LightOutput {
       return traits;
   }
 
-  void write_state(esphome::light::LightState* state) override {
-    float r, g, b;
-    state->current_values_as_rgb(&r, &g, &b);
-
-    // Beispiel: LEDs 0–5 für „ES IST“
-    esphome::Color color = esphome::Color::from_rgb(r * 255, g * 255, b * 255);
-    this->internal_light_->all().fade_to_black(); // Alles aus
-    this->internal_light_->range(0, 5) = color;
-    this->internal_light_->schedule_show();
+  void write_state(LightState *state) override {
+      float fred, fgreen, fblue;
+      int red = 124;
+      int green = 124;
+      int blue = 124;
+    
+      // This will be called by the light to get a new state to be written.
+      //float fred, fgreen, fblue;
+      // use any of the provided current_values methods
+      state->current_values_as_rgb(&fred, &fgreen, &fblue);
+      // Write red, green and blue to HW
+      // ...
+      red = fred * 255;
+      green = fgreen * 255;
+      blue = fblue * 255;
+      change = 1;
+      ESP_LOGD("write_state", "New color %i %i %i", red, green, blue );
   }
 
  protected:
