@@ -6,7 +6,7 @@ class WordClockLight : public Component, public LightOutput {
     this->internal_light_ = light;
   }
 
-  LightTraits get_traits() override {
+  esphome::light::LightTraits get_traits() override {
       // return the traits this light supports
       auto traits = LightTraits();
       traits.set_supported_color_modes({ColorMode::RGB, ColorMode::BRIGHTNESS});
