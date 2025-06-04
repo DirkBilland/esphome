@@ -8,8 +8,8 @@ WordClockLight = wordclock_ns.class_("WordClockLight", light.LightOutput)
 
 CONF_INTERNAL_LIGHT = "internal_light"
 
-CONFIG_SCHEMA = light.RGB_LIGHT_SCHEMA.extend({
-    cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(WordClockLight),
+CONFIG_SCHEMA = cv.Schema({
+    cv.GenerateID(): cv.declare_id(WordClockLight),
     cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.AddressableLight),
 })
 
