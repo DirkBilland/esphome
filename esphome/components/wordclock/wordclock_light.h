@@ -1,6 +1,9 @@
 #include "esphome.h"
 
-class WordClockLight : public esphome::light::LightOutput {
+using namespace esphome;
+using namespace light;
+
+class WordClockLight : public LightOutput {
  public:
   void set_internal_light(esphome::light::AddressableLight* light) {
     this->internal_light_ = light;
