@@ -1,7 +1,7 @@
 #include "esphome.h"
 #include <NeoPixelBus.h>
 
-class WordClockLight : public esphome::light::LightOutput {
+class WordClockLight : public Component, public LightOutput {
  public:
   void set_internal_light(esphome::light::AddressableLight* light) {
     this->internal_light_ = light;
