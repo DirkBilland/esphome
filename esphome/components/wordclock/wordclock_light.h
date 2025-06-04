@@ -1,4 +1,5 @@
 #include "esphome.h"
+#include <NeoPixelBus.h>
 
 class WordClockLight : public esphome::light::LightOutput {
  public:
