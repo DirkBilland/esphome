@@ -5,7 +5,7 @@ using namespace light;
 
 bool change = false;
 
-class WordClockLight : public LightOutput {
+class WordClockLight : public Component, public LightOutput {
  public:
   void set_internal_light(AddressableLight* light) {
     this->internal_light_ = light;
