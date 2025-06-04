@@ -9,7 +9,7 @@ class WordClockLight : public esphome::light::LightOutput {
   esphome::light::LightTraits get_traits() override {
       // return the traits this light supports
       auto traits = esphome::light::LightTraits();
-      traits.set_supported_color_modes({ColorMode::RGB, ColorMode::BRIGHTNESS});
+      traits.set_supported_color_modes({esphome::light::ColorMode::RGB, esphome::light::ColorMode::BRIGHTNESS});
       return traits;
   }
 
