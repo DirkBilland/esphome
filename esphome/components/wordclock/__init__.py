@@ -10,7 +10,7 @@ CONF_INTERNAL_LIGHT = "internal_light"
 
 CONFIG_SCHEMA = cv.Schema({
     cv.GenerateID(): cv.declare_id(WordClock),
-    cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(AddressableLightOutput),
+    cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.AddressableLight),
 })
 
 async def to_code(config):
