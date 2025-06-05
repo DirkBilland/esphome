@@ -18,17 +18,17 @@ class WordClock : public Component {
     this->internal_light_ = light;
   }
 
-void ExampleComponent::setup() {
+void WordClock ::setup() {
   // Code here should perform all component initialization,
   //  whether hardware, memory, or otherwise
 }
 
-void ExampleComponent::loop() {
+void WordClock ::loop() {
   // Tasks here will be performed at every call of the main application loop.
   // Note: code here MUST NOT BLOCK (see below)
 }
 
-void ExampleComponent::dump_config(){
+void WordClock ::dump_config(){
   ESP_LOGCONFIG(TAG, "Example component");
   //ESP_LOGCONFIG(TAG, "  foo = %s", TRUEFALSE(this->foo_));
   //ESP_LOGCONFIG(TAG, "  bar = %s", this->bar_.c_str());
