@@ -2,6 +2,9 @@
 
 #include "esphome/core/component.h"
 
+using namespace esphome
+using namespace light
+
 namespace esphome {
 namespace wordclock {
 
