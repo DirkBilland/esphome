@@ -12,7 +12,7 @@ static const char *TAG = "example_component.component";
 
 bool change = false;
 
-class WordClock : public Component {
+class WordClock : public Component, public LightOutput {
  public:
   void set_internal_light(AddressableLight* light) {
     this->internal_light_ = light;
