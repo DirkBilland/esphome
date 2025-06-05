@@ -26,6 +26,11 @@ class WordClock : public Component, public LightOutput {
   }
 
   void write_state(LightState *state) override {
+      float fred, fgreen, fblue;
+      int red = 124;
+      int green = 124;
+      int blue = 124;
+    
       // This will be called by the light to get a new state to be written.
       //float fred, fgreen, fblue;
       // use any of the provided current_values methods
