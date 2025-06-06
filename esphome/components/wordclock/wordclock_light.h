@@ -108,15 +108,15 @@ class WordClock : public Component, public LightOutput {
   void loop() override {
       //auto time = id(current_time).now();
 //      auto time = ESPTime::from_epoch_local( current_time->timestamp_now() + 150);
-      int h = time.hour;
-      int m = time.minute;
-      int s = time.second;
+      // int h = time.hour;
+      // int m = time.minute;
+      // int s = time.second;
 
 //      boxclocklight->current_values_as_rgb(&fred, &fgreen, &fblue);
       //convert float 0.0 till 1.0 into int 0 till 255
-      red = fred * 255;
-      green = fgreen * 255;
-      blue = fblue * 255;
+      // red = fred * 255;
+      // green = fgreen * 255;
+      // blue = fblue * 255;
 
       //auto ledlight = id(boxclocklight).remote_values;
       // https://www.esphome.io/api/classesphome_1_1light_1_1_light_color_values.html LightColorValues Class
@@ -128,8 +128,8 @@ class WordClock : public Component, public LightOutput {
       //auto &it = *internal_light_->get_output();
 
        //check if valid time. Blink red,green,blue until valid time is present
-      if (time.is_valid() == false) {
-          ESP_LOGE("loop", "Got invalid time from current_time Time: %i:%i", h, m );
+      //if (time.is_valid() == false) {
+          //ESP_LOGE("loop", "Got invalid time from current_time Time: %i:%i", h, m );
           //internal_light_[0] = Color(255, 0, 0); delay(250);
           //auto *output = static_cast<light::NeoPixelBusLightOutput*>(id(led_strip));
           //internal_light_->get_controller()->leds()[0].setRGB(r, g, b);
@@ -137,8 +137,8 @@ class WordClock : public Component, public LightOutput {
           // strip.SetPixelColor(0, RgbColor(0, 255, 0)); strip.Show(); delay(250);
           // strip.SetPixelColor(0, RgbColor(0, 0, 255)); strip.Show(); delay(250);
           // strip.SetPixelColor(0, RgbColor(0, 0, 0));   strip.Show();
-    }
-      else {
+    // }
+    //   else {
           // only update once in a Minute
 //                if(h != hour || m != minute) {
           // if ((s != second) || change) {
@@ -165,7 +165,7 @@ class WordClock : public Component, public LightOutput {
 //                   strip.Show();
 //                  ESP_LOGD("loop", "Update Time: %i:%i  Brightness: %i RGB: %i-%i-%i", hour, minute, brightness, red, green, blue);
 //                  ESP_LOGD("loop", "Using tmp_hour: %i tmp_minute: %i minutessum: %i", tmp_hour, tmp_minute, minutessum);
-              }
+//              }
           } // Loop()
       } // Class WordClock
   }
