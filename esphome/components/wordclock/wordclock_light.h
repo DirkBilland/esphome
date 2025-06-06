@@ -8,7 +8,7 @@ using namespace light;
 namespace esphome {
 namespace wordclock {
 
-static const char *TAG = "example_component.component";
+static const char *TAG = "wordclock_light.component";
 
 int leds_time_it_is[] = {20, -1, -1, -1, -1}; // ES IST
 int leds_minutes[] = {124, 123, 122, 121}; // Minutes LEDS
@@ -129,6 +129,7 @@ class WordClock : public Component, public LightOutput {
        //check if valid time. Blink red,green,blue until valid time is present
       if (time.is_valid() == false) {
           ESP_LOGE("loop", "Got invalid time from current_time Time: %i:%i", h, m );
+          internal_light_->[0]= Color(255, 0, 0); delay(250);
           strip.SetPixelColor(0, RgbColor(255, 0, 0)); strip.Show(); delay(250);
           strip.SetPixelColor(0, RgbColor(0, 255, 0)); strip.Show(); delay(250);
           strip.SetPixelColor(0, RgbColor(0, 0, 255)); strip.Show(); delay(250);
