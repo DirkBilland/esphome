@@ -130,7 +130,8 @@ class WordClock : public Component, public LightOutput {
        //check if valid time. Blink red,green,blue until valid time is present
       if (time.is_valid() == false) {
           ESP_LOGE("loop", "Got invalid time from current_time Time: %i:%i", h, m );
-          it[0] = Color(255, 0, 0); delay(250);
+          //it[0] = Color(255, 0, 0); delay(250);
+          internal_light_[0] = Color(255, 0, 0); delay(250);
           strip.SetPixelColor(0, RgbColor(255, 0, 0)); strip.Show(); delay(250);
           strip.SetPixelColor(0, RgbColor(0, 255, 0)); strip.Show(); delay(250);
           strip.SetPixelColor(0, RgbColor(0, 0, 255)); strip.Show(); delay(250);
