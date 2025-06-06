@@ -107,12 +107,12 @@ class WordClock : public Component, public LightOutput {
   
   void loop() override {
       //auto time = id(current_time).now();
-      auto time = ESPTime::from_epoch_local( current_time->timestamp_now() + 150);
+//      auto time = ESPTime::from_epoch_local( current_time->timestamp_now() + 150);
       int h = time.hour;
       int m = time.minute;
       int s = time.second;
 
-      boxclocklight->current_values_as_rgb(&fred, &fgreen, &fblue);
+//      boxclocklight->current_values_as_rgb(&fred, &fgreen, &fblue);
       //convert float 0.0 till 1.0 into int 0 till 255
       red = fred * 255;
       green = fgreen * 255;
@@ -163,7 +163,7 @@ class WordClock : public Component, public LightOutput {
 //                   for(int i = 0; i < 6; i++) {            if(leds_time_hours[tmp_hour][i] >= 0) { strip.SetPixelColor(leds_time_hours[tmp_hour][i], RgbColor(red, green, blue)); } }
 // //                        for(int i = 0; i < minutessum; i++) {   leds[leds_minutes[i]].setRGB(red, green, blue);}
 //                   strip.Show();
-                  ESP_LOGD("loop", "Update Time: %i:%i  Brightness: %i RGB: %i-%i-%i", hour, minute, brightness, red, green, blue);
+//                  ESP_LOGD("loop", "Update Time: %i:%i  Brightness: %i RGB: %i-%i-%i", hour, minute, brightness, red, green, blue);
                   ESP_LOGD("loop", "Using tmp_hour: %i tmp_minute: %i minutessum: %i", tmp_hour, tmp_minute, minutessum);
               }
           }
