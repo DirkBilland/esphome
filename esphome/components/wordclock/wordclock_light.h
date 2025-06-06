@@ -125,7 +125,7 @@ class WordClock : public Component, public LightOutput {
       // green = (int)(ledlight.get_green()*255);
       // blue = (int)(ledlight.get_blue()*255);
 
-      //auto &it = *internal_light_->get_output();
+      auto it = internal_light_->get_output();
 
        //check if valid time. Blink red,green,blue until valid time is present
       //if (time.is_valid() == false) {
