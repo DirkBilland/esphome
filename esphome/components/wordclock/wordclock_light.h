@@ -84,9 +84,9 @@ class WordClock : public Component, public LightOutput {
 
   void setup() override {
     internal_light_->all() = Color::BLACK;
-    internal_light_->all() = Color::RED; delay(10);
-    internal_light_->all() = Color::GREEN; delay(10);
-    internal_light_->all() = Color::BLUE; delay(10);
+    internal_light_->all() = Color(red, 0, 0); delay(10);
+    internal_light_->all() = Color(0, green, 0); delay(10);
+    internal_light_->all() = Color(0, 0, blue); delay(10);
     
 //     strip->Begin();
 //     strip.ClearTo(RgbColor(0, 0, 0));
