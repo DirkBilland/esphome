@@ -84,19 +84,22 @@ class WordClock : public Component, public LightOutput {
 
   void setup() override {
     internal_light_->all() = Color::BLACK;
+    internal_light_->all() = Color::RED; delay(10);
+    internal_light_->all() = Color::GREEN; delay(10);
+    internal_light_->all() = Color::BLUE; delay(10);
     
-    strip->Begin();
-    strip.ClearTo(RgbColor(0, 0, 0));
-    strip.Show();
+//     strip->Begin();
+//     strip.ClearTo(RgbColor(0, 0, 0));
+//     strip.Show();
   
-    // // Start all LED with on and default color and brightness to check if everything is working...
-    for(int i = 0; i < PixelCount; i++) { strip.SetPixelColor(i, RgbColor(red, 0, 0)); strip.Show(); delay(10); }
-    for(int i = 0; i < PixelCount; i++) { strip.SetPixelColor(i, RgbColor(0, green, 0)); strip.Show(); delay(10); }
-    for(int i = 0; i < PixelCount; i++) { strip.SetPixelColor(i, RgbColor(0, 0, blue)); strip.Show(); delay(10); }
-    strip.ClearTo(RgbColor(0, 0, 0));
-    strip.Show();
-    ESP_LOGD("setup", "Setup done!");
-   //register_service(&Wordclock::on_setled, "setled", {"number","red", "blue", "green"});
+//     // // Start all LED with on and default color and brightness to check if everything is working...
+//     for(int i = 0; i < PixelCount; i++) { strip.SetPixelColor(i, RgbColor(red, 0, 0)); strip.Show(); delay(10); }
+//     for(int i = 0; i < PixelCount; i++) { strip.SetPixelColor(i, RgbColor(0, green, 0)); strip.Show(); delay(10); }
+//     for(int i = 0; i < PixelCount; i++) { strip.SetPixelColor(i, RgbColor(0, 0, blue)); strip.Show(); delay(10); }
+//     strip.ClearTo(RgbColor(0, 0, 0));
+//     strip.Show();
+//     ESP_LOGD("setup", "Setup done!");
+//    //register_service(&Wordclock::on_setled, "setled", {"number","red", "blue", "green"});
   }
   
   void loop() override {
