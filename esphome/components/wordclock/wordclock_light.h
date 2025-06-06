@@ -87,6 +87,9 @@ class WordClock : public Component, public LightOutput {
     internal_light_->all() = Color(red, 0, 0); delay(10);
     internal_light_->all() = Color(0, green, 0); delay(10);
     internal_light_->all() = Color(0, 0, blue); delay(10);
+    internal_light_->all() = Color::BLACK;
+
+    ESP_LOGD("setup", "Setup done!");
     
 //     strip->Begin();
 //     strip.ClearTo(RgbColor(0, 0, 0));
