@@ -130,13 +130,13 @@ class WordClock : public Component, public LightOutput {
        //check if valid time. Blink red,green,blue until valid time is present
       if (time.is_valid() == false) {
           ESP_LOGE("loop", "Got invalid time from current_time Time: %i:%i", h, m );
-          internal_light_[0] = Color(255, 0, 0); delay(250);
+          //internal_light_[0] = Color(255, 0, 0); delay(250);
           //auto *output = static_cast<light::NeoPixelBusLightOutput*>(id(led_strip));
           //internal_light_->get_controller()->leds()[0].setRGB(r, g, b);
-          strip.SetPixelColor(0, RgbColor(255, 0, 0)); strip.Show(); delay(250);
-          strip.SetPixelColor(0, RgbColor(0, 255, 0)); strip.Show(); delay(250);
-          strip.SetPixelColor(0, RgbColor(0, 0, 255)); strip.Show(); delay(250);
-          strip.SetPixelColor(0, RgbColor(0, 0, 0));   strip.Show();
+          // strip.SetPixelColor(0, RgbColor(255, 0, 0)); strip.Show(); delay(250);
+          // strip.SetPixelColor(0, RgbColor(0, 255, 0)); strip.Show(); delay(250);
+          // strip.SetPixelColor(0, RgbColor(0, 0, 255)); strip.Show(); delay(250);
+          // strip.SetPixelColor(0, RgbColor(0, 0, 0));   strip.Show();
     }
       else {
           // only update once in a Minute
@@ -157,12 +157,12 @@ class WordClock : public Component, public LightOutput {
                       tmp_hour += 11;  
                   int minutessum = minute % 5;
                   // Reset all LED, but skip LED 110 till 120
-                  for(int i = 0; i < PixelCount; i++) {     if(i < 110 || i > 120) strip.SetPixelColor(i, RgbColor(0, 0, 0)); }
-                  for(int i = 0; i < 5; i++) {            strip.SetPixelColor(leds_time_it_is[i], RgbColor(red, green, blue)); }
-                  for(int i = 0; i < 3; i++) {           if(leds_time_minutes[tmp_minute][i] >= 0) { strip.SetPixelColor(leds_time_minutes[tmp_minute][i], RgbColor(red, green, blue)); } }
-                  for(int i = 0; i < 6; i++) {            if(leds_time_hours[tmp_hour][i] >= 0) { strip.SetPixelColor(leds_time_hours[tmp_hour][i], RgbColor(red, green, blue)); } }
-//                        for(int i = 0; i < minutessum; i++) {   leds[leds_minutes[i]].setRGB(red, green, blue);}
-                  strip.Show();
+//                   for(int i = 0; i < PixelCount; i++) {     if(i < 110 || i > 120) strip.SetPixelColor(i, RgbColor(0, 0, 0)); }
+//                   for(int i = 0; i < 5; i++) {            strip.SetPixelColor(leds_time_it_is[i], RgbColor(red, green, blue)); }
+//                   for(int i = 0; i < 3; i++) {           if(leds_time_minutes[tmp_minute][i] >= 0) { strip.SetPixelColor(leds_time_minutes[tmp_minute][i], RgbColor(red, green, blue)); } }
+//                   for(int i = 0; i < 6; i++) {            if(leds_time_hours[tmp_hour][i] >= 0) { strip.SetPixelColor(leds_time_hours[tmp_hour][i], RgbColor(red, green, blue)); } }
+// //                        for(int i = 0; i < minutessum; i++) {   leds[leds_minutes[i]].setRGB(red, green, blue);}
+//                   strip.Show();
                   ESP_LOGD("loop", "Update Time: %i:%i  Brightness: %i RGB: %i-%i-%i", hour, minute, brightness, red, green, blue);
                   ESP_LOGD("loop", "Using tmp_hour: %i tmp_minute: %i minutessum: %i", tmp_hour, tmp_minute, minutessum);
               }
