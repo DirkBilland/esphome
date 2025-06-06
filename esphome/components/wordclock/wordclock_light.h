@@ -167,9 +167,7 @@ class WordClock : public Component, public LightOutput {
 //                  ESP_LOGD("loop", "Using tmp_hour: %i tmp_minute: %i minutessum: %i", tmp_hour, tmp_minute, minutessum);
 //              }
           } // Loop()
-      } // Class WordClock
-  }
-  
+    
   void dump_config(){
     ESP_LOGCONFIG(TAG, "Example component");
     //ESP_LOGCONFIG(TAG, "  foo = %s", TRUEFALSE(this->foo_));
@@ -179,7 +177,7 @@ class WordClock : public Component, public LightOutput {
 
  protected:
   esphome::light::AddressableLight* internal_light_;
-};
+};// Class WordClock
 } // namespace wordclock
 } // namespace esphome
 
