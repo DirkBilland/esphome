@@ -84,11 +84,11 @@ class WordClock : public Component, public LightOutput {
 
   void setup() override {
     internal_light_->all() = Color::BLACK;
-    internal_light_->all() = Color(red, 0, 0); internal_light_->update_state(); delay(10);
-    internal_light_->all() = Color(0, green, 0); internal_light_->update_state(); delay(10);
-    internal_light_->all() = Color(0, 0, blue); internal_light_->update_state(); delay(10);
+    internal_light_->all() = Color(red, 0, 0); internal_light_->schedule_show(); delay(10);
+    internal_light_->all() = Color(0, green, 0); internal_light_->schedule_show(); delay(10);
+    internal_light_->all() = Color(0, 0, blue); internal_light_->schedule_show(); delay(10);
     internal_light_->all() = Color::BLACK;
-    internal_light_->update_state();
+    internal_light_->schedule_show();
 
     ESP_LOGD("setup", "Setup done!");
     
