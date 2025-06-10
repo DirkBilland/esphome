@@ -107,7 +107,7 @@ class WordClock : public Component, public LightOutput {
   
   void loop() override {
       //auto time = id(current_time).now();
-      auto time = ESPTime::from_epoch_local( current_time->timestamp_now() + 150);
+//      auto time = ESPTime::from_epoch_local( current_time->timestamp_now() + 150);
       int h = time.hour;
       int m = time.minute;
       int s = time.second;
