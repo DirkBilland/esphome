@@ -140,7 +140,7 @@ class WordClock : public Component, public LightOutput {
           // strip.SetPixelColor(0, RgbColor(0, 255, 0)); strip.Show(); delay(250);
           // strip.SetPixelColor(0, RgbColor(0, 0, 255)); strip.Show(); delay(250);
           // strip.SetPixelColor(0, RgbColor(0, 0, 0));   strip.Show();
-     }
+       }
        else {
           // only update once in a Minute
 //                if(h != hour || m != minute) {
