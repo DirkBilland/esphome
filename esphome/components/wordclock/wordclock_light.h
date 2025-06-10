@@ -4,6 +4,7 @@
 
 using namespace esphome;
 using namespace light;
+using namespace time;
 
 namespace esphome {
 namespace wordclock {
@@ -108,10 +109,10 @@ class WordClock : public Component, public LightOutput {
   
   void loop() override {
       //auto time = id(current_time).now();
-//      auto time = ESPTime::from_epoch_local( current_time->timestamp_now() + 150);
-      // int h = time.hour;
-      // int m = time.minute;
-      // int s = time.second;
+      auto time = ESPTime::from_epoch_local( current_time->timestamp_now() + 150);
+      int h = time.hour;
+      int m = time.minute;
+      int s = time.second;
 
 //      boxclocklight->current_values_as_rgb(&fred, &fgreen, &fblue);
       //convert float 0.0 till 1.0 into int 0 till 255
@@ -129,7 +130,7 @@ class WordClock : public Component, public LightOutput {
       //auto it = internal_light_->get_output();
 
        //check if valid time. Blink red,green,blue until valid time is present
-      //if (time.is_valid() == false) {
+      if (time.is_valid() == false) {
           //ESP_LOGE("loop", "Got invalid time from current_time Time: %i:%i", h, m );
           (*internal_light_)[0] = Color(255, 0, 0); internal_light_->schedule_show(); delay(250);
           (*internal_light_)[0] = Color(0, 255, 0); internal_light_->schedule_show(); delay(250);
@@ -139,8 +140,8 @@ class WordClock : public Component, public LightOutput {
           // strip.SetPixelColor(0, RgbColor(0, 255, 0)); strip.Show(); delay(250);
           // strip.SetPixelColor(0, RgbColor(0, 0, 255)); strip.Show(); delay(250);
           // strip.SetPixelColor(0, RgbColor(0, 0, 0));   strip.Show();
-    // }
-    //   else {
+     }
+       else {
           // only update once in a Minute
 //                if(h != hour || m != minute) {
           // if ((s != second) || change) {
