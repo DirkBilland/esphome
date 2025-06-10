@@ -131,8 +131,9 @@ class WordClock : public Component, public LightOutput {
       //if (time.is_valid() == false) {
           //ESP_LOGE("loop", "Got invalid time from current_time Time: %i:%i", h, m );
           (*internal_light_)[0] = Color(255, 0, 0); delay(250);
-          //auto *output = static_cast<light::NeoPixelBusLightOutput*>(id(led_strip));
-          //internal_light_->get_controller()->leds()[0].setRGB(r, g, b);
+          (*internal_light_)[0] = Color(0, 255, 0); delay(250);
+          (*internal_light_)[0] = Color(0, 0, 255); delay(250);
+
           // strip.SetPixelColor(0, RgbColor(255, 0, 0)); strip.Show(); delay(250);
           // strip.SetPixelColor(0, RgbColor(0, 255, 0)); strip.Show(); delay(250);
           // strip.SetPixelColor(0, RgbColor(0, 0, 255)); strip.Show(); delay(250);
