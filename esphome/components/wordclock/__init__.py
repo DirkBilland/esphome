@@ -1,6 +1,6 @@
 
 import esphome.codegen as cg
-from esphome.components import light, output, neopixelbus, time
+from esphome.components import light, output, neopixelbus, time as time_
 import esphome.config_validation as cv
 from esphome.const import CONF_ID, CONF_OUTPUT_ID
 
@@ -13,7 +13,7 @@ CONF_TIMESOURCE = "timesource"
 CONFIG_SCHEMA = cv.Schema({
     cv.GenerateID(): cv.declare_id(WordClockLight),
     cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.AddressableLight),
-    cv.Required(CONF_TIMESOURCE): cv.use_id(RealTimeClock )
+    cv.Required(CONF_TIMESOURCE): cv.use_id(time_.RealTimeClock )
 })
 
 async def to_code(config):
