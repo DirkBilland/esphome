@@ -2,7 +2,7 @@
 import esphome.codegen as cg
 from esphome.components import light, output, neopixelbus
 import esphome.config_validation as cv
-from esphome.const import CONF_ID, CONF_OUTPUT_ID
+from esphome.const import CONF_ID, CONF_OUTPUT_ID, CONF_TIME
 
 wordclock_light_ns = cg.esphome_ns.namespace("wordclock_light")
 WordClockLight = wordclock_light_ns.class_("WordClockLight", cg.Component)
