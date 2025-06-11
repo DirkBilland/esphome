@@ -3,13 +3,13 @@ from esphome.components import light, output, neopixelbus
 import esphome.config_validation as cv
 from esphome.const import CONF_ID, CONF_OUTPUT_ID
 
-wordclock_ns = cg.esphome_ns.namespace("wordclock")
-WordClock = wordclock_ns.class_("WordClock", cg.Component)
+wordclock_light_ns = cg.esphome_ns.namespace("wordclock_light")
+WordClockLight = wordclock_ns.class_("WordClockLight", cg.Component)
 
 CONF_INTERNAL_LIGHT = "internal_light"
 
 CONFIG_SCHEMA = cv.Schema({
-    cv.GenerateID(): cv.declare_id(WordClock),
+    cv.GenerateID(): cv.declare_id(WordClockLight),
     cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.AddressableLight),
 })
 
