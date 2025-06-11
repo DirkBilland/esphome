@@ -1,3 +1,4 @@
+
 import esphome.codegen as cg
 from esphome.components import light, output, neopixelbus
 import esphome.config_validation as cv
@@ -11,6 +12,7 @@ CONF_INTERNAL_LIGHT = "internal_light"
 CONFIG_SCHEMA = cv.Schema({
     cv.GenerateID(): cv.declare_id(WordClockLight),
     cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.AddressableLight),
+    cv.Required(CONF_TIME): cv.use_id(homeassistant::HomeassistantTime)
 })
 
 async def to_code(config):
