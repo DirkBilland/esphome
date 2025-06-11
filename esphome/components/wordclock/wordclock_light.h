@@ -8,7 +8,7 @@ using namespace light;
 using namespace time;
 
 namespace esphome {
-namespace wordclock {
+namespace wordclock_light {
 
 static const char *TAG = "wordclock_light.component";
 
@@ -57,7 +57,7 @@ int second = -1;
 
 bool change = false;
 
-class WordClock : public Component, public LightOutput {
+class WordClock_Light : public Component, public LightOutput {
  public:
   void set_internal_light(AddressableLight* light) {
     this->internal_light_ = light;
@@ -181,8 +181,8 @@ class WordClock : public Component, public LightOutput {
 
  protected:
   esphome::light::AddressableLight* internal_light_;
-};// Class WordClock
-} // namespace wordclock
+};// Class WordClock_Light
+} // namespace wordclock_light
 } // namespace esphome
 
 
