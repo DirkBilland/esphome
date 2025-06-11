@@ -2,17 +2,18 @@
 import esphome.codegen as cg
 from esphome.components import light, output, neopixelbus, homeassistant
 import esphome.config_validation as cv
-from esphome.const import CONF_ID, CONF_OUTPUT_ID, CONF_TIME
+from esphome.const import CONF_ID, CONF_OUTPUT_ID
 
 wordclock_light_ns = cg.esphome_ns.namespace("wordclock_light")
 WordClockLight = wordclock_light_ns.class_("WordClockLight", cg.Component)
 
 CONF_INTERNAL_LIGHT = "internal_light"
+CONF_TIMESOURCE = "timesource"
 
 CONFIG_SCHEMA = cv.Schema({
     cv.GenerateID(): cv.declare_id(WordClockLight),
     cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.AddressableLight),
-    cv.Required(CONF_TIME): cv.use_id(HomeassistantTime)
+    cv.Required(CONF_TIMESOURCE): cv.use_id(RealTimeClock )
 })
 
 async def to_code(config):
