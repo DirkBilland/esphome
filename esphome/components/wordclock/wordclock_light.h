@@ -189,10 +189,7 @@ class WordClockLight : public light::LightOutput, public Component {
     } // Loop()
     
   void dump_config(){
-    //ESP_LOGCONFIG(TAG, "Example component");
-    //ESP_LOGCONFIG(TAG, "  foo = %s", TRUEFALSE(this->foo_));
-    //ESP_LOGCONFIG(TAG, "  bar = %s", this->bar_.c_str());
-    //ESP_LOGCONFIG(TAG, "  baz = %i", this->baz_);
+    ESP_LOGCONFIG(TAG, "WordClockLight component");
   }
 
  protected:
