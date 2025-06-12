@@ -21,3 +21,5 @@ async def to_code(config):
     await cg.register_component(var, config)
     internal = await cg.get_variable(config[CONF_INTERNAL_LIGHT])
     cg.add(var.set_internal_light(internal))
+    internal = await cg.get_variable(config[CONF_TIMESOURCE])
+    cg.add(var.set_timesource(internal))
