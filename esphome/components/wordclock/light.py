@@ -13,13 +13,16 @@ CONF_TIMESOURCE = "timesource"
 
 CONFIG_SCHEMA = light.ADDRESSABLE_LIGHT_SCHEMA.extend(
     {
+        cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(RGBLightOutput),
         cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.AddressableLight),
-        cv.Required(CONF_TIMESOURCE): cv.use_id(time_.RealTimeClock )
+        cv.Required(CONF_TIMESOURCE): cv.use_id(time_.WordClockLight )
     }
 )
 
 async def to_code(config):
-    var = await light.new_light(config)
+    var = cg.new_Pvariable(config[CONF_OUTPUT_ID])
+    await light.register_light(var, config)
+    
     internal = await cg.get_variable(config[CONF_INTERNAL_LIGHT])
     cg.add(var.set_internal_light(internal))
     internal = await cg.get_variable(config[CONF_TIMESOURCE])
