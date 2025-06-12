@@ -1,6 +1,7 @@
 
 import esphome.codegen as cg
 from esphome.components import light, output
+from esphome.components.light import LightType
 from esphome.components import neopixelbus, time as time_
 import esphome.config_validation as cv
 from esphome.const import CONF_ID, CONF_OUTPUT_ID
