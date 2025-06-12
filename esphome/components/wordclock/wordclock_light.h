@@ -57,7 +57,7 @@ int second = -1;
 
 bool change = false;
 
-class WordClock_Light : public Component, public LightOutput {
+class WordClockLight : public Component, public LightOutput {
  public:
   void set_internal_light(AddressableLight* light) {
     this->internal_light_ = light;
