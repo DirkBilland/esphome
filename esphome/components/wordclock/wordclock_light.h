@@ -186,6 +186,7 @@ class WordClockLight : public Component, public LightOutput {
 //                  ESP_LOGD("loop", "Using tmp_hour: %i tmp_minute: %i minutessum: %i", tmp_hour, tmp_minute, minutessum);
               }
           }
+       }
     } // Loop()
     
   void dump_config(){
