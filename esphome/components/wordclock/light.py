@@ -11,9 +11,7 @@ WordClockLight = wordclock_light_ns.class_("WordClockLight", light.LightOutput)
 CONF_INTERNAL_LIGHT = "internal_light"
 CONF_TIMESOURCE = "timesource"
 
-CONFIG_SCHEMA = light.ADDRESSABLE_LIGHT_SCHEMA(
-    WordClockLight, type_=ADDRESSABLE 
-).extend(
+CONFIG_SCHEMA = light.ADDRESSABLE_LIGHT_SCHEMA.extend(
     {
         cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.AddressableLight),
         cv.Required(CONF_TIMESOURCE): cv.use_id(time_.RealTimeClock )
