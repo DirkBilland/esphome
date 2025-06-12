@@ -10,7 +10,7 @@ WordClockLight = wordclock_light_ns.class_("WordClockLight", cg.Component)
 CONF_INTERNAL_LIGHT = "internal_light"
 CONF_TIMESOURCE = "timesource"
 
-CONFIG_SCHEMA = cv.Schema({
+CONFIG_SCHEMA = cv.ENTITY_BASE_SCHEMA.extend({
     cv.GenerateID(): cv.declare_id(WordClockLight),
     cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.AddressableLight),
     cv.Required(CONF_TIMESOURCE): cv.use_id(time_.RealTimeClock )
