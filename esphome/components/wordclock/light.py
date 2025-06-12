@@ -1,7 +1,6 @@
 
 import esphome.codegen as cg
 from esphome.components import light, output
-from esphome.components.light import LightType
 from esphome.components import neopixelbus, time as time_
 import esphome.config_validation as cv
 from esphome.const import CONF_ID, CONF_OUTPUT_ID
@@ -13,7 +12,7 @@ CONF_INTERNAL_LIGHT = "internal_light"
 CONF_TIMESOURCE = "timesource"
 
 CONFIG_SCHEMA = light.ADDRESSABLE_LIGHT_SCHEMA(
-    WordClockLight, type_=LightType.ADDRESSABLE 
+    WordClockLight, type_=ADDRESSABLE 
 ).extend(
     {
         cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.AddressableLight),
