@@ -13,9 +13,9 @@ CONF_TIMESOURCE = "timesource"
 
 CONFIG_SCHEMA = light.ADDRESSABLE_LIGHT_SCHEMA.extend(
     {
-        cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(RGBLightOutput),
+        cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(WordClockLight),
         cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.AddressableLight),
-        cv.Required(CONF_TIMESOURCE): cv.use_id(time_.WordClockLight )
+        cv.Required(CONF_TIMESOURCE): cv.use_id(time_.RealTimeClock  )
     }
 )
 
