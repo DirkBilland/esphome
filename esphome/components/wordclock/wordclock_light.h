@@ -181,6 +181,7 @@ class WordClock_Light : public Component, public LightOutput {
 
  protected:
   esphome::light::AddressableLight* internal_light_;
+  time::RealTimeClock* timesource;
 };// Class WordClock_Light
 } // namespace wordclock_light
 } // namespace esphome
