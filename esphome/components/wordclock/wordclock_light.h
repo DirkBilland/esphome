@@ -173,7 +173,7 @@ class WordClockLight : public Component, public LightOutput {
                   //for(int i = 0; i < minutessum; i++) {   leds[leds_minutes[i]].setRGB(red, green, blue);}
                   internal_light_->schedule_show();
                 
-                 ESP_LOGD("loop", "Update Time: %i:%i  Brightness: %i RGB: %i-%i-%i", hour, minute, brightness, red, green, blue);
+                 //ESP_LOGD("loop", "Update Time: %i:%i  Brightness: %i RGB: %i-%i-%i", hour, minute, brightness, red, green, blue);
                  ESP_LOGD("loop", "Using tmp_hour: %i tmp_minute: %i minutessum: %i", tmp_hour, tmp_minute, minutessum);
                  
 //                   for(int i = 0; i < PixelCount; i++) {     if(i < 110 || i > 120) strip.SetPixelColor(i, RgbColor(0, 0, 0)); }
