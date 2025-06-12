@@ -11,7 +11,7 @@ WordClockLight = wordclock_light_ns.class_("WordClockLight", light.LightOutput)
 CONF_INTERNAL_LIGHT = "internal_light"
 CONF_TIMESOURCE = "timesource"
 
-CONFIG_SCHEMA = light.light_schema(
+CONFIG_SCHEMA = light.ADDRESSABLE_LIGHT_SCHEMA(
     WordClockLight, type_=LightType.ADDRESSABLE 
 ).extend(
     {
