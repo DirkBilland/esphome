@@ -150,7 +150,7 @@ class WordClockLight : public Component, public LightOutput {
           // only update once in a Minute
 //                if(h != hour || m != minute) {
           if ((s != second) || change) {
-              ESP_LOGD("loop", "Using b: %i rgb %i %i %i", brightness, red, green, blue);
+              // ESP_LOGD("loop", "Using b: %i rgb %i %i %i", brightness, red, green, blue);
               hour = h;
               minute = m;  
               second = s;
