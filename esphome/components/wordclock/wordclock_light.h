@@ -108,6 +108,7 @@ class WordClockLight : public Component, public LightOutput {
 //     strip.ClearTo(RgbColor(0, 0, 0));
 //     strip.Show();
 //     ESP_LOGD("setup", "Setup done!");
+    
 //    //register_service(&Wordclock::on_setled, "setled", {"number","red", "blue", "green"});
   }
   
@@ -135,7 +136,7 @@ class WordClockLight : public Component, public LightOutput {
 
        //check if valid time. Blink red,green,blue until valid time is present
       if (time.is_valid() == false) {
-          //ESP_LOGE("loop", "Got invalid time from current_time Time: %i:%i", h, m );
+          ESP_LOGE("loop", "Got invalid time from current_time Time: %i:%i", h, m );
           (*internal_light_)[0] = Color(255, 0, 0); internal_light_->schedule_show(); delay(250);
           (*internal_light_)[0] = Color(0, 255, 0); internal_light_->schedule_show(); delay(250);
           (*internal_light_)[0] = Color(0, 0, 255); internal_light_->schedule_show(); delay(250);
@@ -148,22 +149,33 @@ class WordClockLight : public Component, public LightOutput {
        else {
           // only update once in a Minute
 //                if(h != hour || m != minute) {
-          // if ((s != second) || change) {
-          //     ESP_LOGD("loop", "Using b: %i rgb %i %i %i", brightness, red, green, blue);
-          //     hour = h;
-          //     minute = m;  
-          //     second = s;
-          //     change = 0;
-          //     if (hour >= 0 && time.is_valid() == true){
-          //         int tmp_hour = hour;
-          //         int tmp_minute = (minute - (minute % 5));
-          //         if(tmp_minute >= 25) { tmp_hour += 1; }
-          //         tmp_minute = tmp_minute / 5;
-          //         tmp_hour = tmp_hour % 12;
-          //         if ((tmp_hour == 1) && (tmp_minute == 0))  //"EINS" anstelle von "EIN" verwenden
-          //             tmp_hour += 11;  
-          //         int minutessum = minute % 5;
-          //         // Reset all LED, but skip LED 110 till 120
+          if ((s != second) || change) {
+              ESP_LOGD("loop", "Using b: %i rgb %i %i %i", brightness, red, green, blue);
+              hour = h;
+              minute = m;  
+              second = s;
+              change = 0;
+              if (hour >= 0 && time.is_valid() == true){
+                  int tmp_hour = hour;
+                  int tmp_minute = (minute - (minute % 5));
+                  if(tmp_minute >= 25) { tmp_hour += 1; }
+                  tmp_minute = tmp_minute / 5;
+                  tmp_hour = tmp_hour % 12;
+                  if ((tmp_hour == 1) && (tmp_minute == 0))  //"EINS" anstelle von "EIN" verwenden
+                      tmp_hour += 11;  
+                  int minutessum = minute % 5;
+                  // Reset all LED, but skip LED 110 till 120
+
+                  for(int i = 0; i < PixelCount; i++) {     if(i < 110 || i > 120) (*internal_light_)[i] = Color(0, 0, 0); }
+                  for(int i = 0; i < 5; i++) {            (*internal_light_)[leds_time_it_is[i]] = Color(red, green, blue); }
+                  for(int i = 0; i < 3; i++) {           if(leds_time_minutes[tmp_minute][i] >= 0) { (*internal_light_)[leds_time_minutes[tmp_minute][i]] = Color(red, green, blue); } }
+                  for(int i = 0; i < 6; i++) {            if(leds_time_hours[tmp_hour][i] >= 0) { (*internal_light_)[leds_time_hours[tmp_hour][i]] = Color(red, green, blue); } }
+                  //for(int i = 0; i < minutessum; i++) {   leds[leds_minutes[i]].setRGB(red, green, blue);}
+                  internal_light_->schedule_show();
+                
+                 ESP_LOGD("loop", "Update Time: %i:%i  Brightness: %i RGB: %i-%i-%i", hour, minute, brightness, red, green, blue);
+                 ESP_LOGD("loop", "Using tmp_hour: %i tmp_minute: %i minutessum: %i", tmp_hour, tmp_minute, minutessum);
+                 
 //                   for(int i = 0; i < PixelCount; i++) {     if(i < 110 || i > 120) strip.SetPixelColor(i, RgbColor(0, 0, 0)); }
 //                   for(int i = 0; i < 5; i++) {            strip.SetPixelColor(leds_time_it_is[i], RgbColor(red, green, blue)); }
 //                   for(int i = 0; i < 3; i++) {           if(leds_time_minutes[tmp_minute][i] >= 0) { strip.SetPixelColor(leds_time_minutes[tmp_minute][i], RgbColor(red, green, blue)); } }
@@ -173,10 +185,11 @@ class WordClockLight : public Component, public LightOutput {
 //                  ESP_LOGD("loop", "Update Time: %i:%i  Brightness: %i RGB: %i-%i-%i", hour, minute, brightness, red, green, blue);
 //                  ESP_LOGD("loop", "Using tmp_hour: %i tmp_minute: %i minutessum: %i", tmp_hour, tmp_minute, minutessum);
               }
-          } // Loop()
+          }
+    } // Loop()
     
   void dump_config(){
-    ESP_LOGCONFIG(TAG, "Example component");
+    //ESP_LOGCONFIG(TAG, "Example component");
     //ESP_LOGCONFIG(TAG, "  foo = %s", TRUEFALSE(this->foo_));
     //ESP_LOGCONFIG(TAG, "  bar = %s", this->bar_.c_str());
     //ESP_LOGCONFIG(TAG, "  baz = %i", this->baz_);
