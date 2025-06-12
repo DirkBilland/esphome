@@ -110,7 +110,7 @@ class WordClockLight : public Component, public LightOutput {
   
   void loop() override {
       //auto time = id(current_time).now();
-      auto time = ESPTime::from_epoch_local( timesource->timestamp_now() + 150);
+      auto time = ESPTime::from_epoch_local( timesource_->timestamp_now() + 150);
       int h = time.hour;
       int m = time.minute;
       int s = time.second;
@@ -181,7 +181,7 @@ class WordClockLight : public Component, public LightOutput {
 
  protected:
   esphome::light::AddressableLight* internal_light_;
-  time::RealTimeClock* timesource;
+  time::RealTimeClock* timesource_;
 };// Class WordClock_Light
 } // namespace wordclock_light
 } // namespace esphome
