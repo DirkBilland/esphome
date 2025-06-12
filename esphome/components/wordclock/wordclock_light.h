@@ -46,7 +46,7 @@ int leds_time_hours[][6] = {
     { 11,  -1,  -1,  -1,  -1,  -1}  // EIN
 };
 
-float fred, fgreen, fblue;
+
 int red = 124;
 int green = 124;
 int blue = 124;
@@ -170,8 +170,8 @@ class WordClockLight : public light::LightOutput, public Component {
                   for(int i = 0; i < 3; i++) {           if(leds_time_minutes[tmp_minute][i] >= 0) { (*internal_light_)[leds_time_minutes[tmp_minute][i]] = Color(red, green, blue); } }
                   for(int i = 0; i < 6; i++) {            if(leds_time_hours[tmp_hour][i] >= 0) { (*internal_light_)[leds_time_hours[tmp_hour][i]] = Color(red, green, blue); } }
                   //for(int i = 0; i < minutessum; i++) {   leds[leds_minutes[i]].setRGB(red, green, blue);}
-                  //internal_light_->schedule_show();
-                  this->update_state();
+                  internal_light_->schedule_show();
+                  //this->update_state();
                 
                  ESP_LOGD("loop", "Update Time: %i:%i  Brightness: %i RGB: %i-%i-%i", hour, minute, brightness, red, green, blue);
                  ESP_LOGD("loop", "Using tmp_hour: %i tmp_minute: %i minutessum: %i", tmp_hour, tmp_minute, minutessum);
@@ -199,6 +199,8 @@ class WordClockLight : public light::LightOutput, public Component {
  protected:
   esphome::light::AddressableLight* internal_light_;
   time::RealTimeClock* timesource_;
+
+  float fred = 0.5, fgreen = 0.5, fblue = 0.5;
 };// Class WordClock_Light
 } // namespace wordclock_light
 } // namespace esphome
