@@ -165,7 +165,7 @@ class WordClockLight : public light::LightOutput, public Component {
                   int minutessum = minute % 5;
                   // Reset all LED, but skip LED 110 till 120
                   //for(int i = 0; i < internal_light_->size(); i++) {     if(i < 110 || i > 120) (*internal_light_)[i] = Color(0, 0, 0); }
-                  internal_light_->all() = Color::BLACK;
+                  internal_light_->all() = Color::WHITE;
                   for(int i = 0; i < 5; i++) {            (*internal_light_)[leds_time_it_is[i]] = Color(red, green, blue); }
                   for(int i = 0; i < 3; i++) {           if(leds_time_minutes[tmp_minute][i] >= 0) { (*internal_light_)[leds_time_minutes[tmp_minute][i]] = Color(red, green, blue); } }
                   for(int i = 0; i < 6; i++) {            if(leds_time_hours[tmp_hour][i] >= 0) { (*internal_light_)[leds_time_hours[tmp_hour][i]] = Color(red, green, blue); } }
