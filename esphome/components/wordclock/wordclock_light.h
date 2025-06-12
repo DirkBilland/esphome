@@ -60,7 +60,7 @@ bool change = false;
 
 class WordClockLight : public light::LightOutput, public Component {
  public:
-  void set_internal_light(AddressableLight* light) {
+  void set_internal_light(light::AddressableLight* light) {
     this->internal_light_ = light;
   }
   void set_timesource(time::RealTimeClock* timesource) {
