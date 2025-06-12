@@ -50,6 +50,7 @@ float fred, fgreen, fblue;
 int red = 124;
 int green = 124;
 int blue = 124;
+int brightness = 50;
     
 int hour = -1;
 int minute = -1;
@@ -89,9 +90,9 @@ class WordClockLight : public Component, public LightOutput {
 
   void setup() override {
     internal_light_->all() = Color::BLACK;
-    internal_light_->all() = Color(red, 0, 0); internal_light_->schedule_show(); delay(10);
-    internal_light_->all() = Color(0, green, 0); internal_light_->schedule_show(); delay(10);
-    internal_light_->all() = Color(0, 0, blue); internal_light_->schedule_show(); delay(10);
+    internal_light_->all() = Color(red, 0, 0); internal_light_->schedule_show(); 
+    internal_light_->all() = Color(0, green, 0); internal_light_->schedule_show(); 
+    internal_light_->all() = Color(0, 0, blue); internal_light_->schedule_show(); 
     internal_light_->all() = Color::BLACK;
     internal_light_->schedule_show();
 
@@ -137,9 +138,9 @@ class WordClockLight : public Component, public LightOutput {
        //check if valid time. Blink red,green,blue until valid time is present
       if (time.is_valid() == false) {
           ESP_LOGE("loop", "Got invalid time from current_time Time: %i:%i", h, m );
-          (*internal_light_)[0] = Color(255, 0, 0); internal_light_->schedule_show(); delay(250);
-          (*internal_light_)[0] = Color(0, 255, 0); internal_light_->schedule_show(); delay(250);
-          (*internal_light_)[0] = Color(0, 0, 255); internal_light_->schedule_show(); delay(250);
+          (*internal_light_)[0] = Color(255, 0, 0); internal_light_->schedule_show(); 
+          (*internal_light_)[0] = Color(0, 255, 0); internal_light_->schedule_show(); 
+          (*internal_light_)[0] = Color(0, 0, 255); internal_light_->schedule_show(); 
 
           // strip.SetPixelColor(0, RgbColor(255, 0, 0)); strip.Show(); delay(250);
           // strip.SetPixelColor(0, RgbColor(0, 255, 0)); strip.Show(); delay(250);
@@ -150,7 +151,7 @@ class WordClockLight : public Component, public LightOutput {
           // only update once in a Minute
 //                if(h != hour || m != minute) {
           if ((s != second) || change) {
-              // ESP_LOGD("loop", "Using b: %i rgb %i %i %i", brightness, red, green, blue);
+              ESP_LOGD("loop", "Using b: %i rgb %i %i %i", brightness, red, green, blue);
               hour = h;
               minute = m;  
               second = s;
@@ -173,7 +174,7 @@ class WordClockLight : public Component, public LightOutput {
                   //for(int i = 0; i < minutessum; i++) {   leds[leds_minutes[i]].setRGB(red, green, blue);}
                   internal_light_->schedule_show();
                 
-                 //ESP_LOGD("loop", "Update Time: %i:%i  Brightness: %i RGB: %i-%i-%i", hour, minute, brightness, red, green, blue);
+                 ESP_LOGD("loop", "Update Time: %i:%i  Brightness: %i RGB: %i-%i-%i", hour, minute, brightness, red, green, blue);
                  ESP_LOGD("loop", "Using tmp_hour: %i tmp_minute: %i minutessum: %i", tmp_hour, tmp_minute, minutessum);
                  
 //                   for(int i = 0; i < PixelCount; i++) {     if(i < 110 || i > 120) strip.SetPixelColor(i, RgbColor(0, 0, 0)); }
