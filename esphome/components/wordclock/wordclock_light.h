@@ -165,12 +165,13 @@ class WordClockLight : public light::LightOutput, public Component {
                   int minutessum = minute % 5;
                   // Reset all LED, but skip LED 110 till 120
                   //for(int i = 0; i < internal_light_->size(); i++) {     if(i < 110 || i > 120) (*internal_light_)[i] = Color(0, 0, 0); }
-                  internal_light_->all() = Color::WHITE;
+                  internal_light_->all() = Color::BLACK;
                   for(int i = 0; i < 5; i++) {            (*internal_light_)[leds_time_it_is[i]] = Color(red, green, blue); }
                   for(int i = 0; i < 3; i++) {           if(leds_time_minutes[tmp_minute][i] >= 0) { (*internal_light_)[leds_time_minutes[tmp_minute][i]] = Color(red, green, blue); } }
                   for(int i = 0; i < 6; i++) {            if(leds_time_hours[tmp_hour][i] >= 0) { (*internal_light_)[leds_time_hours[tmp_hour][i]] = Color(red, green, blue); } }
                   //for(int i = 0; i < minutessum; i++) {   leds[leds_minutes[i]].setRGB(red, green, blue);}
-                  internal_light_->schedule_show();
+                  //internal_light_->schedule_show();
+                  internal_light_->update_state();
                 
                  ESP_LOGD("loop", "Update Time: %i:%i  Brightness: %i RGB: %i-%i-%i", hour, minute, brightness, red, green, blue);
                  ESP_LOGD("loop", "Using tmp_hour: %i tmp_minute: %i minutessum: %i", tmp_hour, tmp_minute, minutessum);
