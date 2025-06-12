@@ -11,11 +11,14 @@ WordClockLight = wordclock_light_ns.class_("WordClockLight", light.LightOutput)
 CONF_INTERNAL_LIGHT = "internal_light"
 CONF_TIMESOURCE = "timesource"
 
-CONFIG_SCHEMA = cv.ENTITY_BASE_SCHEMA.extend({
-    cv.GenerateID(): cv.declare_id(WordClockLight),
-    cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.AddressableLight),
-    cv.Required(CONF_TIMESOURCE): cv.use_id(time_.RealTimeClock )
-})
+CONFIG_SCHEMA = light.light_schema(
+    WordClockLight, type_=LightType.ADDRESSABLE 
+).extend(
+    {
+        cv.Required(CONF_INTERNAL_LIGHT): cv.use_id(light.AddressableLight),
+        cv.Required(CONF_TIMESOURCE): cv.use_id(time_.RealTimeClock )
+    }
+)
 
 async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
