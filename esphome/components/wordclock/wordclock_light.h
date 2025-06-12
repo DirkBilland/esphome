@@ -3,9 +3,9 @@
 #include "esphome.h"
 #include "esphome/core/component.h"
 
-using namespace esphome;
-using namespace light;
-using namespace time;
+//using namespace esphome;
+//using namespace light;
+//using namespace time;
 
 namespace esphome {
 namespace wordclock_light {
@@ -67,14 +67,14 @@ class WordClockLight : public light::LightOutput, public Component {
     this->timesource_ = timesource;
   }
 
-  LightTraits get_traits() override {
+  light::LightTraits get_traits() override {
       // return the traits this light supports
       auto traits = LightTraits();
       traits.set_supported_color_modes({ColorMode::RGB, ColorMode::BRIGHTNESS});
       return traits;
   }
 
-  void write_state(LightState *state) override {
+  void write_state(light::LightState *state) override {
       // This will be called by the light to get a new state to be written.
       //float fred, fgreen, fblue;
       // use any of the provided current_values methods
@@ -95,21 +95,7 @@ class WordClockLight : public light::LightOutput, public Component {
     internal_light_->all().set(Color(0, green, 0)); internal_light_->schedule_show(); 
     internal_light_->all().set(Color(0, 0, blue)); internal_light_->schedule_show(); 
     internal_light_->all().set(Color::BLACK); internal_light_->schedule_show();
-    ESP_LOGD("setup", "Setup done!");
-    
-//     strip->Begin();
-//     strip.ClearTo(RgbColor(0, 0, 0));
-//     strip.Show();
-  
-//     // // Start all LED with on and default color and brightness to check if everything is working...
-//     for(int i = 0; i < PixelCount; i++) { strip.SetPixelColor(i, RgbColor(red, 0, 0)); strip.Show(); delay(10); }
-//     for(int i = 0; i < PixelCount; i++) { strip.SetPixelColor(i, RgbColor(0, green, 0)); strip.Show(); delay(10); }
-//     for(int i = 0; i < PixelCount; i++) { strip.SetPixelColor(i, RgbColor(0, 0, blue)); strip.Show(); delay(10); }
-//     strip.ClearTo(RgbColor(0, 0, 0));
-//     strip.Show();
-//     ESP_LOGD("setup", "Setup done!");
-    
-//    //register_service(&Wordclock::on_setled, "setled", {"number","red", "blue", "green"});
+    ESP_LOGD("setup", "Setup done!");    
   }
   
   void loop() override {
