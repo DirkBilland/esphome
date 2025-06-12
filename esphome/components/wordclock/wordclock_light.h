@@ -99,6 +99,7 @@ class WordClockLight : public light::LightOutput, public Component {
   }
   
   void loop() override {
+      ESP_LOGD("loop", "Loop started");
       //auto time = id(current_time).now();
       auto time = ESPTime::from_epoch_local( timesource_->timestamp_now() + 150);
       int h = time.hour;
@@ -172,6 +173,7 @@ class WordClockLight : public light::LightOutput, public Component {
               }
           }
        }
+     ESP_LOGD("loop", "Loop end");
     } // Loop()
     
   void dump_config(){
