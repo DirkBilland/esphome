@@ -120,7 +120,7 @@ class WordClockLight : public light::LightOutput, public Component {
       int m = time.minute;
       int s = time.second;
 
-      this->current_values_as_rgb(&fred, &fgreen, &fblue);
+      internal_light_->current_values_as_rgb(&fred, &fgreen, &fblue);
       //convert float 0.0 till 1.0 into int 0 till 255
       red = fred * 255;
       green = fgreen * 255;
