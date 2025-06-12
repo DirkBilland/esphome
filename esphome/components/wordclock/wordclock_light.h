@@ -89,8 +89,8 @@ class WordClockLight : public light::LightOutput, public Component {
   }
 
   void setup() override {
-    internal_light_->all()->set(Color::BLACK);
-    internal_light_->all()->set(Color(red, 0, 0)); internal_light_->schedule_show(); 
+    internal_light_->all().set(Color::BLACK);
+    internal_light_->all().set(Color(red, 0, 0)); internal_light_->schedule_show(); 
     internal_light_->all() = Color(0, green, 0); internal_light_->schedule_show(); 
     internal_light_->all() = Color(0, 0, blue); internal_light_->schedule_show(); 
     internal_light_->all() = Color::BLACK;
