@@ -62,6 +62,9 @@ class WordClockLight : public Component, public LightOutput {
   void set_internal_light(AddressableLight* light) {
     this->internal_light_ = light;
   }
+  void set_timesource(time::RealTimeClock* timesource) {
+    this->timesource_ = timesource;
+  }
 
   LightTraits get_traits() override {
       // return the traits this light supports
