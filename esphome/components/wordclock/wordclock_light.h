@@ -69,9 +69,10 @@ class WordClockLight : public light::LightOutput, public Component {
 
   light::LightTraits get_traits() override {
       // return the traits this light supports
-      auto traits = light::LightTraits();
-      traits.set_supported_color_modes({light::ColorMode::RGB});
-      return traits;
+      // auto traits = light::LightTraits();
+      // traits.set_supported_color_modes({light::ColorMode::RGB});
+      // return traits;
+    return internal_light_->get_traits();
   }
 
   void write_state(light::LightState *state) override {
