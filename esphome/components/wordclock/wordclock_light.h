@@ -75,7 +75,7 @@ class WordClockLight : public light::LightOutput, public Component {
   }
 
   void write_state(light::LightState *state) override {
-      internal_light_->write_state(state);
+      internal_light_->update_state(state);
       // This will be called by the light to get a new state to be written.
       //float fred, fgreen, fblue;
       // use any of the provided current_values methods
