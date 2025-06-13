@@ -124,9 +124,9 @@ class WordClockLight : public light::LightOutput, public Component {
        //check if valid time. Blink red,green,blue until valid time is present
       if (time.is_valid() == false) {
           ESP_LOGE("loop", "Got invalid time from current_time Time: %i:%i", h, m );
-          (*internal_light_)[0] = Color(255, 0, 0); internal_light_->schedule_show(); 
-          (*internal_light_)[0] = Color(0, 255, 0); internal_light_->schedule_show(); 
-          (*internal_light_)[0] = Color(0, 0, 255); internal_light_->schedule_show(); 
+          // (*internal_light_)[0] = Color(255, 0, 0); internal_light_->schedule_show(); 
+          // (*internal_light_)[0] = Color(0, 255, 0); internal_light_->schedule_show(); 
+          // (*internal_light_)[0] = Color(0, 0, 255); internal_light_->schedule_show(); 
 
           // strip.SetPixelColor(0, RgbColor(255, 0, 0)); strip.Show(); delay(250);
           // strip.SetPixelColor(0, RgbColor(0, 255, 0)); strip.Show(); delay(250);
