@@ -68,10 +68,6 @@ class WordClockLight : public light::LightOutput, public Component {
   }
 
   light::LightTraits get_traits() override {
-      // return the traits this light supports
-      // auto traits = light::LightTraits();
-      // traits.set_supported_color_modes({light::ColorMode::RGB});
-      // return traits;
     return internal_light_->get_traits();
   }
 
@@ -93,11 +89,6 @@ class WordClockLight : public light::LightOutput, public Component {
   void setup() override {
     ESP_LOGD("setup", "Setup started");
     internal_light_->setup();
-    // internal_light_->all().set(Color::BLACK);
-    // internal_light_->all().set(Color(red, 0, 0)); internal_light_->schedule_show(); 
-    // internal_light_->all().set(Color(0, green, 0)); internal_light_->schedule_show(); 
-    // internal_light_->all().set(Color(0, 0, blue)); internal_light_->schedule_show(); 
-    // internal_light_->all().set(Color::BLACK); internal_light_->schedule_show();
     ESP_LOGD("setup", "Setup done!");    
   }
   
